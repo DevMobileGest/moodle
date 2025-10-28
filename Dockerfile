@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     git unzip libpq-dev libpng-dev libjpeg-dev libfreetype6-dev libxml2-dev \
     libzip-dev libssl-dev zlib1g-dev libonig-dev libicu-dev \
-    libxslt1-dev ghostscript gnupg libcurl4-openssl-dev && \
+    libxslt1-dev ghostscript gnupg libcurl4-openssl-dev libsodium-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # ---------- PHP EXTENSIONS ----------
