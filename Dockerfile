@@ -5,14 +5,13 @@ FROM php:8.2-apache
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     git unzip libpq-dev libpng-dev libjpeg-dev libfreetype6-dev libxml2-dev \
-    libzip-dev libssl-dev zlib1g-dev libonig-dev libicu-dev libmcrypt-dev \
+    libzip-dev libssl-dev zlib1g-dev libonig-dev libicu-dev \
     libxslt1-dev ghostscript gnupg libcurl4-openssl-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # ---------- PHP EXTENSIONS ----------
-RUN docker-php-ext-install \
-    iconv mbstring openssl ctype zip gd simplexml dom xml xmlreader intl fileinfo sodium pdo pdo_mysql soap && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install gd intl soap sodium pdo pdo_mysql zip xml xmlreader
 
 # ---------- ENABLE APACHE MODS ----------
 RUN a2enmod rewrite headers env dir mime
