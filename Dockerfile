@@ -11,8 +11,7 @@ RUN apt-get update && \
 
 # ---------- PHP EXTENSIONS ----------
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd intl soap sodium pdo pdo_mysql zip xml dom && \
-    docker-php-ext-install xmlreader
+    docker-php-ext-install gd intl soap sodium pdo pdo_mysql zip
 
 # ---------- ENABLE APACHE MODS ----------
 RUN a2enmod rewrite headers env dir mime
