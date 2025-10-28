@@ -2,11 +2,11 @@
 FROM php:8.2-apache
 
 # ---------- SYSTEM DEPENDENCIES ----------
-RUN apt-get update && \
+    RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     git unzip libpq-dev libpng-dev libjpeg-dev libfreetype6-dev libxml2-dev \
     libzip-dev libssl-dev zlib1g-dev libonig-dev libicu-dev libmcrypt-dev \
-    libxslt1-dev ghostscript gnupg && \
+    libxslt1-dev ghostscript gnupg libcurl4-openssl-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # ---------- PHP EXTENSIONS ----------
